@@ -1,0 +1,92 @@
+@mixin reset-flex() {
+  flex-basis: initial;
+  flex-grow: initial;
+  flex-shrink: initial;
+}
+
+@mixin flex-va($el: items, $insert: false) {
+  $ins: if($insert != false, '-#{$insert}-', '-');
+
+  &--va#{$ins}top {
+    align-#{$el}: flex-start;
+  }
+
+  &--va#{$ins}bottom {
+    align-#{$el}: flex-end;
+  }
+
+  &--va#{$ins}middle {
+    align-#{$el}: center;
+  }
+}
+
+@mixin flex-ha($insert: false) {
+  $ins: if($insert != false, '-#{$insert}-', '-');
+
+  &--ha#{$ins}start {
+    justify-content: flex-start;
+  }
+
+  &--ha#{$ins}end {
+    justify-content: flex-end;
+  }
+
+  &--ha#{$ins}center {
+    justify-content: center;
+  }
+
+  &--ha#{$ins}between {
+    justify-content: space-between;
+  }
+
+  &--ha#{$ins}around {
+    justify-content: space-around;
+  }
+}
+
+@mixin grid-gaps($n) {
+  $pad: if(unit($n) != '', $n, $n * 1px);
+
+  padding: #{$pad / 2};
+}
+
+@mixin grid-outer-gaps($n) {
+  $pad: if(unit($n) != '', $n, $n * 1px);
+
+  margin: -#{$pad / 2};;
+}
+
+@mixin flex-size($n) {
+  max-width: $n;
+
+  flex: 0 0 $n;
+}
+
+@mixin flex-oam($insert: false) {
+  $ins: if($insert != false, '-#{$insert}-', '-');
+  $ins2: if($insert != false, '-#{$insert}', '');
+
+  &--offset#{$ins}auto {
+    margin-left: auto;
+  }
+
+  &--size#{$ins}auto {
+    flex: 1 1 auto;
+  }
+
+  &--size#{$ins}min {
+    @include reset-flex();
+  }
+}
+
+@mixin flex-base-order($insert: false) {
+  $ins: if($insert != false, '-#{$insert}-', '-');
+
+  &--order#{$ins}first {
+    order: -1;
+  }
+
+  &--order#{$ins}last {
+    order: 999;
+  }
+}

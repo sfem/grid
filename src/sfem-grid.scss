@@ -1,0 +1,109 @@
+@import '_scss-core/variables';
+@import '_scss-core/functions';
+@import '_scss-core/mixins';
+
+.#{$sfem-grid-name} {
+  @include flex-va();
+  @include flex-ha();
+  @include grid-outer-gaps($sfem-grid-gap-base);
+
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @each $num in $sfem-grid-gap-additional {
+    &--gap-#{$num} {
+      @include grid-outer-gaps($num);
+    }
+  }
+
+  @each $name, $value in $sfem-grid-breakpoint {
+    @include bp($name) {
+      @include flex-va($insert: $name);
+
+
+      @each $num in $sfem-grid-gap-additional {
+        $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
+        &--gap-#{$name}-#{$postfix} {
+          @include grid-outer-gaps($num);
+        }
+      }
+    }
+  }
+
+  &--no-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+.#{$sfem-grid-box-name} {
+  @include grid-gaps($sfem-grid-gap-base);
+  @include flex-va(self);
+  @include flex-oam();
+  @include flex-base-order();
+
+  //&[class*='--size'] {
+  //  flex-grow: 0;
+  //  flex-shrink: 0;
+  //}
+
+  @each $val in $sfem-grid-gap-additional {
+    .grid--gap-#{$val} > & {
+      @include grid-gaps($val);
+    }
+  }
+
+  @each $name, $value in $sfem-grid-breakpoint {
+    @include bp($name) {
+      @include flex-va(self, $name);
+      @include flex-oam($name);
+      @include flex-base-order($name);
+
+      @each $val in $sfem-grid-gap-additional {
+        .grid--gap-#{$name}-#{$val} > & {
+          @include grid-gaps($val);
+        }
+      }
+    }
+  }
+
+  @each $c in $sfem-grid-columns {
+    @for $i from 1 through $c {
+      $w: 100 / $c * $i * 1%;
+      $postfix: '';
+
+      @if length($sfem-grid-columns) > 1 {
+        $postfix: 'of#{$c}'
+      }
+
+      &--order-#{$i}#{$postfix} {
+        order: $i;
+      }
+
+      &--size-#{$i}#{$postfix} {
+        @include flex-size($w);
+      }
+
+      &--offset-#{$i}#{$postfix} {
+        margin-left: $w;
+      }
+
+      @each $name, $value in $sfem-grid-breakpoint {
+        @include bp($name) {
+          &--size-#{$name}-#{$i}#{$postfix} {
+            @include flex-size($w);
+          }
+
+          &--offset-#{$name}-#{$i}#{$postfix} {
+            margin-left: $w;
+          }
+
+          &--order-#{$name}-#{$i}#{$postfix} {
+            order: $i;
+          }
+        }
+      }
+    }
+  }
+}
