@@ -60,7 +60,7 @@
   .grid__box--va-middle {
     -ms-flex-item-align: center;
         align-self: center; }
-  .grid__box--offsetauto {
+  .grid__box--offset-auto {
     margin-left: auto; }
   .grid__box--size-auto {
     -webkit-box-flex: 1;
@@ -248,7 +248,7 @@
     .grid__box--va-xxs-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-xxs-auto {
       margin-left: auto; }
     .grid__box--size-xxs-auto {
       -webkit-box-flex: 1;
@@ -436,7 +436,7 @@
     .grid__box--va-xs-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-xs-auto {
       margin-left: auto; }
     .grid__box--size-xs-auto {
       -webkit-box-flex: 1;
@@ -624,7 +624,7 @@
     .grid__box--va-s-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-s-auto {
       margin-left: auto; }
     .grid__box--size-s-auto {
       -webkit-box-flex: 1;
@@ -812,7 +812,7 @@
     .grid__box--va-m-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-m-auto {
       margin-left: auto; }
     .grid__box--size-m-auto {
       -webkit-box-flex: 1;
@@ -1000,7 +1000,7 @@
     .grid__box--va-l-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-l-auto {
       margin-left: auto; }
     .grid__box--size-l-auto {
       -webkit-box-flex: 1;
@@ -1188,7 +1188,7 @@
     .grid__box--va-xl-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-xl-auto {
       margin-left: auto; }
     .grid__box--size-xl-auto {
       -webkit-box-flex: 1;
@@ -1376,7 +1376,7 @@
     .grid__box--va-xxl-middle {
       -ms-flex-item-align: center;
           align-self: center; }
-    .grid__box--offsetauto {
+    .grid__box--offset-xxl-auto {
       margin-left: auto; }
     .grid__box--size-xxl-auto {
       -webkit-box-flex: 1;

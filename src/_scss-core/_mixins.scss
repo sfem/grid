@@ -45,11 +45,15 @@
 }
 
 @mixin grid-gaps($n) {
-  padding: #{$n / 2}px;
+  $pad: if(unit($n) != '', $n, $n * 1px);
+
+  padding: #{$pad / 2};
 }
 
 @mixin grid-outer-gaps($n) {
-  margin: -#{$n / 2}px;
+  $pad: if(unit($n) != '', $n, $n * 1px);
+
+  margin: -#{$pad / 2};;
 }
 
 @mixin flex-size($n) {
