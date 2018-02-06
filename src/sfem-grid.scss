@@ -24,7 +24,8 @@
 
 
       @each $num in $sfem-grid-gap-additional {
-        &--gap-#{$name}-#{$num} {
+        $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
+        &--gap-#{$name}-#{$postfix} {
           @include grid-outer-gaps($num);
         }
       }
