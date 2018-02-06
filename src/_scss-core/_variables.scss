@@ -1,0 +1,11 @@
+@import "~@sfem/breakpoint/sfem-breakpoint";
+
+$sfem-grid-name: 'grid' !default;
+$sfem-grid-box-name: 'grid__box' !default;
+
+$sfem-grid-columns: (12) !default;
+
+$sfem-grid-gap-base: 16 !default;
+$sfem-grid-gap-additional: (0, 8, 24) !default;
+
+$sfem-grid-breakpoint: $breakpoints !default;
