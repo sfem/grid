@@ -21,8 +21,7 @@
   @each $name, $value in $sfem-grid-breakpoint {
     @include bp($name) {
       @include flex-va($insert: $name);
-
-
+      
       @each $num in $sfem-grid-gap-additional {
         $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
         &--gap-#{$name}-#{$postfix} {
@@ -42,11 +41,6 @@
   @include flex-va(self);
   @include flex-oam();
   @include flex-base-order();
-
-  //&[class*='--size'] {
-  //  flex-grow: 0;
-  //  flex-shrink: 0;
-  //}
 
   @each $val in $sfem-grid-gap-additional {
     .grid--gap-#{$val} > & {

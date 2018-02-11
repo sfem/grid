@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/euheny/sfem.grid.git"
+    "url": "git+https://github.com/sfem/grid.git"
   },
   "bugs": {
-    "url": "https://github.com/euheny/sfem.grid/issues"
+    "url": "https://github.com/sfem/grid/issues"
   },
-  "homepage": "https://github.com/euheny/sfem.grid#readme"
+  "homepage": "https://github.com/sfem/grid#readme"
 }
