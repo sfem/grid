@@ -64,8 +64,8 @@
     margin-left: auto; }
   .grid__box--size-auto {
     -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto; }
+        -ms-flex: 1;
+            flex: 1 1 0%; }
   .grid__box--size-min {
     -ms-flex-preferred-size: initial;
         flex-basis: initial;
@@ -252,8 +252,8 @@
       margin-left: auto; }
     .grid__box--size-xxs-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-xxs-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -440,8 +440,8 @@
       margin-left: auto; }
     .grid__box--size-xs-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-xs-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -628,8 +628,8 @@
       margin-left: auto; }
     .grid__box--size-s-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-s-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -816,8 +816,8 @@
       margin-left: auto; }
     .grid__box--size-m-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-m-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -1004,8 +1004,8 @@
       margin-left: auto; }
     .grid__box--size-l-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-l-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -1192,8 +1192,8 @@
       margin-left: auto; }
     .grid__box--size-xl-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-xl-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
@@ -1380,8 +1380,8 @@
       margin-left: auto; }
     .grid__box--size-xxl-auto {
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
+          -ms-flex: 1;
+              flex: 1 1 0%; }
     .grid__box--size-xxl-min {
       -ms-flex-preferred-size: initial;
           flex-basis: initial;
