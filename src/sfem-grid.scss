@@ -2,6 +2,11 @@
 @import '_scss-core/functions';
 @import '_scss-core/mixins';
 
+.#{$sfem-grid-name},
+.#{$sfem-grid-box-name} {
+  box-sizing: border-box;
+}
+
 .#{$sfem-grid-name} {
   @include flex-va();
   @include flex-ha();
@@ -21,7 +26,7 @@
   @each $name, $value in $sfem-grid-breakpoint {
     @include bp($name) {
       @include flex-va($insert: $name);
-      
+
       @each $num in $sfem-grid-gap-additional {
         $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
         &--gap-#{$name}-#{$postfix} {
