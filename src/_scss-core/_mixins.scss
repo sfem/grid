@@ -1,7 +1,5 @@
 @mixin reset-flex() {
-  flex-basis: initial;
-  flex-grow: initial;
-  flex-shrink: initial;
+  flex: 0 1 auto;
 }
 
 @mixin flex-va($el: items, $insert: false) {
