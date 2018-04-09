@@ -16,6 +16,7 @@
 
   flex-wrap: wrap;
   justify-content: flex-start;
+  min-width: 0;
 
   @each $num in $sfem-grid-gap-additional {
     &--gap-#{$num} {
