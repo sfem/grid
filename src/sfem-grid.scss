@@ -49,7 +49,7 @@
   @include flex-base-order();
 
   @each $val in $sfem-grid-gap-additional {
-    .grid--gap-#{$val} > & {
+    .#{$sfem-grid-name}--gap-#{$val} > & {
       @include grid-gaps($val);
     }
   }
@@ -61,7 +61,7 @@
       @include flex-base-order($name);
 
       @each $val in $sfem-grid-gap-additional {
-        .grid--gap-#{$name}-#{$val} > & {
+        .#{$sfem-grid-name}--gap-#{$name}-#{$val} > & {
           @include grid-gaps($val);
         }
       }
