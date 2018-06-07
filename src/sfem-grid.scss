@@ -69,13 +69,15 @@
   }
 
   @each $c in $sfem-grid-columns {
+
+    $postfix: '';
+
+    @if length($sfem-grid-columns) > 1 {
+      $postfix: 'of#{$c}'
+    }
+
     @for $i from 1 through $c {
       $w: 100 / $c * $i * 1%;
-      $postfix: '';
-
-      @if length($sfem-grid-columns) > 1 {
-        $postfix: 'of#{$c}'
-      }
 
       &--order-#{$i}#{$postfix} {
         order: $i;

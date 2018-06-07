@@ -62,10 +62,13 @@
 
 @mixin flex-oam($insert: false) {
   $ins: if($insert != false, '-#{$insert}-', '-');
-  $ins2: if($insert != false, '-#{$insert}', '');
 
   &--offset#{$ins}auto {
     margin-left: auto;
+  }
+
+  &--offset#{$ins}0 {
+    margin-left: 0;
   }
 
   &--size#{$ins}auto {
