@@ -1,6 +1,6 @@
 {
   "name": "@sfem/grid",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "FlexBox grid system",
   "main": "dist/sfem-grid.css",
   "scripts": {
