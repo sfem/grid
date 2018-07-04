@@ -24,9 +24,33 @@
     }
   }
 
+  &--display-block {
+    display: block;
+  }
+
+  &--display-iblock {
+    display: inline-block;
+  }
+
+  &--display-iflex {
+    display: inline-flex;
+  }
+
   @each $name, $value in $sfem-grid-breakpoint {
     @include bp($name) {
       @include flex-va($insert: $name);
+
+      &--display-#{$name}-block {
+        display: block;
+      }
+
+      &--display-#{$name}-iblock {
+        display: inline-block;
+      }
+
+      &--display-#{$name}-iflex {
+        display: inline-flex;
+      }
 
       @each $num in $sfem-grid-gap-additional {
         $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
