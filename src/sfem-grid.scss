@@ -19,7 +19,7 @@
   justify-content: flex-start;
   min-width: 0;
 
-  margin: -#{$sfem-grid-gap-base / 2};
+  margin: -#{get-pad($sfem-grid-gap-base) / 2};
 
   // vertical align
 
@@ -64,7 +64,7 @@
 
   // vertical align
 
-  padding: $sfem-grid-gap-base / 2;
+  padding: get-pad($sfem-grid-gap-base) / 2;
 
   @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
     @include mq-sugars-generator(#{&}--va, nth($item, 1)) {
