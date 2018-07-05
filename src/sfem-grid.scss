@@ -1,6 +1,11 @@
+@import '~@sfem/scss-sugars/lib/sugars';
 @import '_scss-core/variables';
 @import '_scss-core/functions';
 @import '_scss-core/mixins';
+
+.#{$sfem-grid-name}-wrap {
+  padding: .1px; // hack for fixing unwanted outer margins
+}
 
 .#{$sfem-grid-name},
 .#{$sfem-grid-box-name} {
@@ -8,89 +13,96 @@
 }
 
 .#{$sfem-grid-name} {
-  @include flex-va();
-  @include flex-ha();
-  @include grid-outer-gaps($sfem-grid-gap-base);
-
   display: flex;
 
   flex-wrap: wrap;
   justify-content: flex-start;
   min-width: 0;
 
-  @each $num in $sfem-grid-gap-additional {
-    &--gap-#{$num} {
-      @include grid-outer-gaps($num);
+  // vertical align
+
+  @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
+    @include mq-sugars-generator(#{&}--va, nth($item, 1)) {
+      align-items: nth($item, 2);
     }
   }
 
-  &--display-block {
-    display: block;
-  }
+  // horizontal align
 
-  &--display-iblock {
-    display: inline-block;
-  }
-
-  &--display-iflex {
-    display: inline-flex;
-  }
-
-  @each $name, $value in $sfem-grid-breakpoint {
-    @include bp($name) {
-      @include flex-va($insert: $name);
-
-      &--display-#{$name}-block {
-        display: block;
-      }
-
-      &--display-#{$name}-iblock {
-        display: inline-block;
-      }
-
-      &--display-#{$name}-iflex {
-        display: inline-flex;
-      }
-
-      @each $num in $sfem-grid-gap-additional {
-        $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
-        &--gap-#{$name}-#{$postfix} {
-          @include grid-outer-gaps($num);
-        }
-      }
+  @each $item in ((start, flex-start), (end, flex-end), (center, center), (between, space-between), (around, space-around)) {
+    @include mq-sugars-generator(#{&}--ha, nth($item, 1)) {
+      justify-content: nth($item, 2);
     }
   }
 
-  &--no-wrap {
+  // grid gaps
+
+  @each $num in $sfem-grid-gaps {
+    @include mq-sugars-generator(#{&}--gap, gap-postfix($num)) {
+      margin: -#{get-pad($num) / 2};
+    }
+  }
+
+  // displays
+
+  @each $item in ((block, block), (iblock, inline-block), (iflex, inline-flex)) {
+    @include mq-sugars-generator(#{&}--display, nth($item, 1)) {
+      display: nth($item, 2);
+    }
+  }
+
+  // Wraps
+
+  @include mq-sugars-generator(#{&}-, no-wrap) {
     flex-wrap: nowrap;
   }
 }
 
 .#{$sfem-grid-box-name} {
-  @include grid-gaps($sfem-grid-gap-base);
-  @include flex-va(self);
-  @include flex-oam();
-  @include flex-base-order();
 
-  @each $val in $sfem-grid-gap-additional {
-    .#{$sfem-grid-name}--gap-#{$val} > & {
-      @include grid-gaps($val);
+  // vertical align
+
+  @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
+    @include mq-sugars-generator(#{&}--va, nth($item, 1)) {
+      align-self: nth($item, 2);
     }
   }
 
-  @each $name, $value in $sfem-grid-breakpoint {
-    @include bp($name) {
-      @include flex-va(self, $name);
-      @include flex-oam($name);
-      @include flex-base-order($name);
+  // grid gaps
 
-      @each $val in $sfem-grid-gap-additional {
-        .#{$sfem-grid-name}--gap-#{$name}-#{$val} > & {
-          @include grid-gaps($val);
-        }
-      }
+  @each $num in $sfem-grid-gaps {
+    @include mq-sugars-generator('.#{$sfem-grid-name}--gap', '#{gap-postfix($num)} > #{&}') {
+      padding: #{get-pad($num) / 2};
     }
   }
+
+  // Basic modifers
+
+  @include mq-sugars-generator(#{&}--offset, auto) {
+    margin-left: auto;
+  }
+
+  @include mq-sugars-generator(#{&}--offset, '0') {
+    margin-left: 0;
+  }
+
+  @include mq-sugars-generator(#{&}--size, auto) {
+    flex: 1;
+  }
+
+  @include mq-sugars-generator(#{&}--size, min) {
+    flex: 0 1 auto;
+  }
+
+  @include mq-sugars-generator(#{&}--order, first) {
+    order: -1;
+  }
+
+  @include mq-sugars-generator(#{&}--order, last) {
+    order: 999;
+  }
+
+  // Sizes
 
   @each $c in $sfem-grid-columns {
 
@@ -103,32 +115,18 @@
     @for $i from 1 through $c {
       $w: 100 / $c * $i * 1%;
 
-      &--order-#{$i}#{$postfix} {
+      @include mq-sugars-generator(#{&}--order, $i + $postfix) {
         order: $i;
       }
 
-      &--size-#{$i}#{$postfix} {
-        @include flex-size($w);
+      @include mq-sugars-generator(#{&}--size, $i + $postfix) {
+        max-width: $w;
+
+        flex: 0 0 $w;
       }
 
-      &--offset-#{$i}#{$postfix} {
+      @include mq-sugars-generator(#{&}--offset, $i + $postfix) {
         margin-left: $w;
-      }
-
-      @each $name, $value in $sfem-grid-breakpoint {
-        @include bp($name) {
-          &--size-#{$name}-#{$i}#{$postfix} {
-            @include flex-size($w);
-          }
-
-          &--offset-#{$name}-#{$i}#{$postfix} {
-            margin-left: $w;
-          }
-
-          &--order-#{$name}-#{$i}#{$postfix} {
-            order: $i;
-          }
-        }
       }
     }
   }

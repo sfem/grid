@@ -9,7 +9,8 @@
   "author": "Euheny Bondarovich",
   "license": "ISC",
   "dependencies": {
-    "@sfem/breakpoint": "^1.1.2",
+    "@sfem/breakpoint": "^1.2.0",
+    "@sfem/scss-sugars": "^1.2.2",
     "autoprefixer": "^7.2.5",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
