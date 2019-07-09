@@ -57,6 +57,14 @@
       display: nth($item, 2);
     }
   }
+
+  // direction
+
+  @each $item in (column, row) {
+    @include mq-sugars-generator(#{&}--direction, $item) {
+      flex-direction: $item;
+    }
+  }
 }
 
 .#{$sfem-grid-box-name} {
