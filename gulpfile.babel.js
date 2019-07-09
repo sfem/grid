@@ -50,13 +50,18 @@ gulp.task('styles', () => {
     ;
 });
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch([
-    path.join('src', '**', '*.scss')
-  ], ['styles']);
-});
-
-gulp.task('build', sequence(
+gulp.task('build', gulp.series(
   'clean',
   'styles',
 ));
+
+gulp.task('watch', gulp.series(
+  'build',
+  () => {
+    gulp.watch([
+      path.join('src', '**', '*.scss')
+    ], ['styles']);
+  }
+));
+
+
