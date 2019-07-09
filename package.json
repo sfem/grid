@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@sfem/breakpoint": "^1.2.1",
-    "@sfem/scss-sugars": "^1.2.6",
+    "@sfem/scss-sugars": "^1.3.0",
     "autoprefixer": "^9.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",

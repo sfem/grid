@@ -13,13 +13,18 @@
 }
 
 .#{$sfem-grid-name} {
+  // Wraps
+  @include mq-sugars-generator(#{&}-, no-wrap) {
+    flex-wrap: nowrap;
+  }
+
   display: flex;
+
+  min-width: 0;
+  margin: -#{get-pad($sfem-grid-gap-base) / 2};
 
   flex-wrap: wrap;
   justify-content: flex-start;
-  min-width: 0;
-
-  margin: -#{get-pad($sfem-grid-gap-base) / 2};
 
   // vertical align
 
@@ -52,18 +57,34 @@
       display: nth($item, 2);
     }
   }
-
-  // Wraps
-
-  @include mq-sugars-generator(#{&}-, no-wrap) {
-    flex-wrap: nowrap;
-  }
 }
 
 .#{$sfem-grid-box-name} {
 
-  // vertical align
+  // Basic modifers
 
+  @include mq-sugars-generator(#{&}--offset, auto) {
+    margin-left: auto;
+  }
+  @include mq-sugars-generator(#{&}--offset, '0') {
+    margin-left: 0;
+  }
+  @include mq-sugars-generator(#{&}--size, auto) {
+    flex: 1;
+  }
+  @include mq-sugars-generator(#{&}--size, min) {
+    flex: 0 1 auto;
+  }
+  @include mq-sugars-generator(#{&}--order, first) {
+    order: -1;
+  }
+  @include mq-sugars-generator(#{&}--order, last) {
+    order: 999;
+  }
+
+  min-width: 0;
+  max-width: 100%;
+  // vertical align
   padding: get-pad($sfem-grid-gap-base) / 2;
 
   @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
@@ -80,40 +101,13 @@
     }
   }
 
-  // Basic modifers
-
-  @include mq-sugars-generator(#{&}--offset, auto) {
-    margin-left: auto;
-  }
-
-  @include mq-sugars-generator(#{&}--offset, '0') {
-    margin-left: 0;
-  }
-
-  @include mq-sugars-generator(#{&}--size, auto) {
-    flex: 1;
-  }
-
-  @include mq-sugars-generator(#{&}--size, min) {
-    flex: 0 1 auto;
-  }
-
-  @include mq-sugars-generator(#{&}--order, first) {
-    order: -1;
-  }
-
-  @include mq-sugars-generator(#{&}--order, last) {
-    order: 999;
-  }
-
   // Sizes
 
   @each $c in $sfem-grid-columns {
-
     $postfix: '';
 
     @if length($sfem-grid-columns) > 1 {
-      $postfix: 'of#{$c}'
+      $postfix: 'of#{$c}';
     }
 
     @for $i from 1 through $c {
@@ -122,13 +116,11 @@
       @include mq-sugars-generator(#{&}--order, $i + $postfix) {
         order: $i;
       }
-
       @include mq-sugars-generator(#{&}--size, $i + $postfix) {
         max-width: $w;
 
         flex: 0 0 $w;
       }
-
       @include mq-sugars-generator(#{&}--offset, $i + $postfix) {
         margin-left: $w;
       }
